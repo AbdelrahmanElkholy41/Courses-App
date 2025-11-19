@@ -1,0 +1,15 @@
+// core/routing/routes.dart
+class Routes {
+  static const String onBoardingScreen = '/onBoardingScreen';
+  static const String loginScreen = '/loginScreen';
+  static const String homeScreen = '/homeScreen';
+  static const String signUpScreen = '/signUpScreen';
+  static const String forgotPasswordScreen = '/forgotPasswordScreen';
+  static const String notificationScreen = '/notificationScreen';
+  static const String doctorCategoryScreen = '/doctorCategoryScreen';
+  static const String recDocScreen = '/recDocScreen';
+
+
+
+
+}
