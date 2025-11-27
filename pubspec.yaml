@@ -31,31 +31,43 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  flutter_screenutil: ^5.9.3
+  flutter_bloc: ^8.1.5
+  freezed_annotation: ^2.4.1
+  get_it: ^7.7.0
+  json_annotation: ^4.9.0
+  dio: ^5.4.3+1
+  retrofit: ^4.1.0
+  pretty_dio_logger: ^1.3.1
+  intl: ^0.20.2
+  easy_localization: ^3.0.3
+  flutter_native_splash: ^2.4.0
+  flutter_svg: ^2.0.10+1
+  flutter_screenutil: ^5.9.0
+  firebase_core: ^2.30.1
+  cached_network_image: ^3.3.1
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^9.2.2
+  shimmer: ^3.0.0
+  material_design_icons_flutter: ^7.0.7296
+  akar_icons_flutter: ^1.1.21
+  iconify_flutter: ^0.0.5
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_native_splash: ^2.4.0
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.9
+  freezed: ^2.4.7
+  json_serializable: ^6.8.0
+  retrofit_generator: ^8.1.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
   assets:
     - assets/images/
-
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

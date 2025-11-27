@@ -1,6 +1,9 @@
 import 'package:courses/feature/onBoarding/ui/onboarding_1.dart';
 import 'package:flutter/material.dart';
 
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -8,15 +11,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-   debugShowCheckedModeBanner: false,
-      home: Onboarding1(),
-
-
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.onBoardingScreen1,
+      onGenerateRoute: AppRouter().generateRoute, // Initialize AppRouter here
     );
   }
 }
-
