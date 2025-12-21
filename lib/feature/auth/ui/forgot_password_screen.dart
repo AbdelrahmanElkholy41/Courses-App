@@ -1,3 +1,4 @@
+import 'package:courses/core/helpers/extensions.dart';
 import 'package:courses/core/helpers/spacing.dart';
 import 'package:courses/core/widgets/coutom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,9 @@ class ForgotPasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pop();
+                },
                 icon: const Icon(
                   Icons.arrow_back_ios_new_rounded,
                   color: Colors.black,
