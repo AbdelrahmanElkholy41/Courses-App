@@ -1,4 +1,7 @@
+import 'package:courses/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class OnboardingWidget extends StatelessWidget {
   const OnboardingWidget({
@@ -24,7 +27,9 @@ class OnboardingWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              SkipComp(onPressed: () {}),
+              SkipComp(onPressed: () {
+                context.pushNamed(Routes.loginScreen);
+              }),
               const SizedBox(height: 85),
               Image.asset(image, fit: BoxFit.contain),
               const SizedBox(height: 24),
