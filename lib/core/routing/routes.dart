@@ -10,6 +10,7 @@ class Routes {
   static const String notificationScreen = '/notificationScreen';
   static const String doctorCategoryScreen = '/doctorCategoryScreen';
   static const String recDocScreen = '/recDocScreen';
+  static const String resetPassword='/resetPassword';
 
 
 

@@ -4,6 +4,7 @@ import 'package:courses/core/widgets/coutom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../../core/widgets/custom_main_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -27,9 +28,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              verticalSpace(22.h),
+              verticalSpace(2.h),
               Center(child: Image.asset('assets/images/book.png')),
-              verticalSpace(65.h),
+              verticalSpace(50.h),
               Card(
                 color: const Color(0xffF2F2F2),
                 child: Padding(
@@ -78,7 +79,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 16,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(Routes.resetPassword);
+                        },
                       ),
                       verticalSpace(35.h),
                     ],

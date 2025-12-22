@@ -52,6 +52,7 @@ dependencies:
   material_design_icons_flutter: ^7.0.7296
   akar_icons_flutter: ^1.1.21
   iconify_flutter: ^0.0.5
+  pin_code_fields: ^8.0.1
 
 
 
