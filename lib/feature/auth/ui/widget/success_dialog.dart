@@ -1,5 +1,9 @@
+import 'package:courses/core/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/routing/routes.dart';
+import '../../../../core/widgets/custom_main_button.dart';
 
 class SuccessDialog extends StatelessWidget {
   const SuccessDialog({super.key});
@@ -7,9 +11,7 @@ class SuccessDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.r),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
       child: Padding(
         padding: EdgeInsets.all(24.w),
         child: Column(
@@ -38,36 +40,18 @@ class SuccessDialog extends StatelessWidget {
             Text(
               'You have successfully reset\nyour password.',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.grey,
-              ),
+              style: TextStyle(fontSize: 14.sp, color: Colors.grey),
             ),
             SizedBox(height: 24.h),
 
             // Done button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // Close dialog
-                  // Navigate to login or home screen
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF2F5A4D),
-                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                child: Text(
-                  'Done',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+            AppTextButton(
+              backgroundColor: const Color(0xff20473E),
+              buttonText: 'Done',
+              textStyle: TextStyle(fontSize: 16.sp, color: Colors.white),
+              onPressed: () {
+                context.pushNamed(Routes.homeScreen);
+              },
             ),
           ],
         ),

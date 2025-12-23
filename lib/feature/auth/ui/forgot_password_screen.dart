@@ -16,79 +16,81 @@ class ForgotPasswordScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black,
-                ),
-              ),
-              verticalSpace(2.h),
-              Center(child: Image.asset('assets/images/book.png')),
-              verticalSpace(50.h),
-              Card(
-                color: const Color(0xffF2F2F2),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      verticalSpace(15.h),
-                      const Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          color: Color(0xff101623),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      verticalSpace(10.h),
-                      const Text(
-                        'Enter your phone numbe#2F2F2Fr, we will send you confirmation code',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff787878),
-                        ),
-                      ),
-                      verticalSpace(47.h),
-                      const Text(
-                        'Phone Number',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14,
-                          color: Color(0xff2F2F2F),
-                        ),
-                      ),
-                      verticalSpace(10.h),
-                      CustomTextField(
-                        hintText: 'Enter your Phone Number',
-                        validator: (value) {},
-                      ),
-                      verticalSpace(24.h),
-                      AppTextButton(
-                        backgroundColor: const Color(0xff20473E),
-                        buttonText: 'Reset Password',
-                        textStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                        onPressed: () {
-                          context.pushNamed(Routes.resetPassword);
-                        },
-                      ),
-                      verticalSpace(35.h),
-                    ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    context.pop();
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.black,
                   ),
                 ),
-              ),
-            ],
+                verticalSpace(2.h),
+                Center(child: Image.asset('assets/images/book.png')),
+                verticalSpace(50.h),
+                Card(
+                  color: const Color(0xffF2F2F2),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        verticalSpace(15.h),
+                        const Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Color(0xff101623),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        verticalSpace(10.h),
+                        const Text(
+                          'Enter your phone numbe#2F2F2Fr, we will send you confirmation code',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff787878),
+                          ),
+                        ),
+                        verticalSpace(47.h),
+                        const Text(
+                          'Phone Number',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Color(0xff2F2F2F),
+                          ),
+                        ),
+                        verticalSpace(10.h),
+                        CustomTextField(
+                          hintText: 'Enter your Phone Number',
+                          validator: (value) {},
+                        ),
+                        verticalSpace(24.h),
+                        AppTextButton(
+                          backgroundColor: const Color(0xff20473E),
+                          buttonText: 'Reset Password',
+                          textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                          onPressed: () {
+                            context.pushNamed(Routes.resetPassword);
+                          },
+                        ),
+                        verticalSpace(35.h),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

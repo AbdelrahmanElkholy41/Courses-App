@@ -25,74 +25,76 @@ class OnboardingWidget extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            children: [
-              SkipComp(onPressed: () {
-                context.pushNamed(Routes.loginScreen);
-              }),
-              const SizedBox(height: 85),
-              Image.asset(image, fit: BoxFit.contain),
-              const SizedBox(height: 24),
-              Text(
-                text1,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 24),
-              Text(
-                text2,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Color(0xFFFFC107), fontSize: 16),
-              ),
-
-              const SizedBox(height: 40),
-              // Dots & Next button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 7,
-                    backgroundColor: currentPageIndex == 0
-                        ? Colors.white
-                        : Colors.white38,
-                  ),
-                  const SizedBox(width: 5),
-                  CircleAvatar(
-                    radius: 7,
-                    backgroundColor: currentPageIndex == 1
-                        ? Colors.white
-                        : Colors.white38,
-                  ),
-                  const SizedBox(width: 5),
-                  CircleAvatar(
-                    radius: 7,
-                    backgroundColor: currentPageIndex == 2
-                        ? Colors.white
-                        : Colors.white38,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-              SizedBox(
-                width: 70,
-                height: 70,
-                child: FloatingActionButton(
-                  onPressed: onPressed,
-
-                  shape: const CircleBorder(),
-                  backgroundColor: const Color(0xFF20473E),
-                  child: const Icon(
-                    Icons.arrow_forward,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SkipComp(onPressed: () {
+                  context.pushNamed(Routes.loginScreen);
+                }),
+                const SizedBox(height: 85),
+                Image.asset(image, fit: BoxFit.contain),
+                const SizedBox(height: 24),
+                Text(
+                  text1,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                     color: Colors.white,
-                    size: 40,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 24),
+                Text(
+                  text2,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Color(0xFFFFC107), fontSize: 16),
+                ),
+            
+                const SizedBox(height: 40),
+                // Dots & Next button
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 7,
+                      backgroundColor: currentPageIndex == 0
+                          ? Colors.white
+                          : Colors.white38,
+                    ),
+                    const SizedBox(width: 5),
+                    CircleAvatar(
+                      radius: 7,
+                      backgroundColor: currentPageIndex == 1
+                          ? Colors.white
+                          : Colors.white38,
+                    ),
+                    const SizedBox(width: 5),
+                    CircleAvatar(
+                      radius: 7,
+                      backgroundColor: currentPageIndex == 2
+                          ? Colors.white
+                          : Colors.white38,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 40),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: FloatingActionButton(
+                    onPressed: onPressed,
+            
+                    shape: const CircleBorder(),
+                    backgroundColor: const Color(0xFF20473E),
+                    child: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
