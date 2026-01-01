@@ -46,35 +46,24 @@ class feature_course extends StatelessWidget {
             onTap: () {
               _scaffoldKey.currentState?.openDrawer();
             },
-            child: Container(
-              padding: EdgeInsets.all(8.w),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Icon(
-                Icons.menu,
-                color: Colors.white,
-                size: 24.sp,
-              ),
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 24.sp,
             ),
           ),
         ),
         Positioned(
           top: 16.h,
           right: 16.w,
-          child: Container(
-            padding: EdgeInsets.all(8.w),
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Icon(
-              Icons.bookmark_border,
-              color: Colors.white,
-              size: 24.sp,
-            ),
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+            Icons.notification_add_outlined,
+            color: Colors.white,
+            size: 24.sp,
           ),
+                    ),
         ),
         Positioned(
           bottom: 16.h,
@@ -111,7 +100,7 @@ class feature_course extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 8.h),
+              SizedBox(height: 15.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

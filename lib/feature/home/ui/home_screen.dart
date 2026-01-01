@@ -1,6 +1,7 @@
 import 'package:courses/core/helpers/spacing.dart';
 import 'package:courses/feature/home/ui/widget/build_drawer.dart';
 import 'package:courses/feature/home/ui/widget/feature_curese.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,19 +23,17 @@ class _CourseHomeScreenState extends State<HomeScreen> {
       key: _scaffoldKey,
 
       drawer: build_drawer(context: context), // <CHANGE> Added drawer
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              feature_course(scaffoldKey: _scaffoldKey,),
-              SizedBox(height: 24.h),
-              _buildReviewsSection(),
-              SizedBox(height: 32.h),
-              _buildCategoriesSection(),
-              SizedBox(height: 80.h),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            feature_course(scaffoldKey: _scaffoldKey,),
+            SizedBox(height: 24.h),
+            _buildReviewsSection(),
+            SizedBox(height: 32.h),
+            _buildCategoriesSection(),
+            SizedBox(height: 80.h),
+          ],
         ),
       ),
       bottomNavigationBar: _buildBottomNavBar(),
@@ -67,14 +66,14 @@ class _CourseHomeScreenState extends State<HomeScreen> {
         ),
         SizedBox(height: 16.h),
         SizedBox(
-          height: 180.h,
+          height: 200.h,
           child: PageView.builder(
             onPageChanged: (index) {
               setState(() {
                 _currentReviewIndex = index;
               });
             },
-            itemCount: 3,
+            itemCount: 6,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -87,13 +86,14 @@ class _CourseHomeScreenState extends State<HomeScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            3,
+            6,
                 (index) => Container(
               margin: EdgeInsets.symmetric(horizontal: 4.w),
               width: 8.w,
               height: 8.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
+
                 color: _currentReviewIndex == index
                     ? const Color(0xFF5C9A8A)
                     : Colors.grey.shade300,
@@ -109,13 +109,27 @@ class _CourseHomeScreenState extends State<HomeScreen> {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            spreadRadius: 2,
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          )
+        ],
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(15.r),
+        border: Border.all(color: Colors.grey.shade200,width: 1.5),
+
+
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          CircleAvatar(
+            radius: 24.r,
+            backgroundImage: const AssetImage('assets/images/book.png'),
+          ),
           Row(
             children: List.generate(
               5,
@@ -140,21 +154,13 @@ class _CourseHomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(height: 8.h),
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 12.r,
-                backgroundColor: Colors.grey.shade300,
-              ),
-              SizedBox(width: 8.w),
-              Text(
-                'Darlene Robertson',
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+          SizedBox(width: 8.w),
+          Text(
+            'Darlene Robertson',
+            style: TextStyle(
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ],
       ),
@@ -176,7 +182,7 @@ class _CourseHomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(height: 16.h),
-          _buildCategoryCard(
+          buildCategoryCard(
             title: 'Courses',
             color: const Color(0xFF5C8C7D),
             height: 200.h,
@@ -186,7 +192,7 @@ class _CourseHomeScreenState extends State<HomeScreen> {
           Row(
             children: [
               Expanded(
-                child: _buildCategoryCard(
+                child: buildCategoryCard(
                   title: 'offers',
                   color: const Color(0xFFB4E4D5),
                   height: 150.h,
@@ -195,7 +201,7 @@ class _CourseHomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(width: 16.w),
               Expanded(
-                child: _buildCategoryCard(
+                child: buildCategoryCard(
                   title: 'Events',
                   color: const Color(0xFFF9D56E),
                   height: 150.h,
@@ -209,48 +215,61 @@ class _CourseHomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildCategoryCard({
+  /// =======================
+  /// CATEGORY CARD
+  /// =======================
+  Widget buildCategoryCard({
     required String title,
     required Color color,
     required double height,
     required IconData icon,
   }) {
-    return Container(
-      height: height,
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16.r), // تدوير خفيف
+      child: ClipPath(
+        clipper: VClipper(),
+        child: Container(
+          height: height,
+          padding: EdgeInsets.all(16.w),
+          color: color,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: Opacity(
-              opacity: 0.3,
-              child: Icon(
-                icon,
-                size: 80.sp,
-                color: Colors.white,
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Opacity(
+                  opacity: 0.3,
+                  child: Icon(
+                    icon,
+                    size: 80.sp,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+
+
+  /// =======================
+  /// CLIPPER
+  /// =======================
+
+
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
@@ -290,4 +309,54 @@ class _CourseHomeScreenState extends State<HomeScreen> {
   }
 }
 
+// class CategoryClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     final path = Path();
+//     final notchDepth = size.height * 0.22;
+//     final notchWidth = size.width * 0.35;
+//
+//     path.moveTo(0, 0);
+//     path.lineTo(size.width, 0);
+//     path.lineTo(size.width, size.height - notchDepth);
+//
+//     path.quadraticBezierTo(
+//       size.width * 0.75,
+//       size.height,
+//       size.width / 2,
+//       size.height,
+//     );
+//
+//     path.quadraticBezierTo(
+//       size.width * 0.25,
+//       size.height,
+//       0,
+//       size.height - notchDepth,
+//     );
+//
+//     path.close();
+//     return path;
+//   }
+//
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+// }
+class VClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
 
+    path.moveTo(0, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height * 0.85);
+
+    path.lineTo(size.width / 2, size.height);
+    path.lineTo(0, size.height * 0.85);
+
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
